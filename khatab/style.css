@@ -1,0 +1,338 @@
+/* ---------------------------------------------------------
+   Global Styles & Design Tokens
+---------------------------------------------------------- */
+:root {
+  --font-primary: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --color-bg: #0a0a0a;
+  --color-surface: rgba(255, 255, 255, 0.04);
+  --color-glass: rgba(255, 255, 255, 0.07);
+  --color-accent: #06b6d4;
+  --color-text: #e0e0e0;
+  --color-muted: #999;
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.4s ease;
+  --radius: 12px;
+}
+
+/* ---------------------------------------------------------
+   Base Reset & Typography
+---------------------------------------------------------- */
+*,
+*::before,
+*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-primary);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+a:hover { opacity: 0.85; }
+
+/* ---------------------------------------------------------
+   Layout Helpers
+---------------------------------------------------------- */
+.container {
+  width: min(90%, 1200px);
+  margin: 0 auto;
+  padding: 1rem;
+}
+.section {
+  padding: 4rem 0;
+}
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--color-accent);
+}
+
+/* ---------------------------------------------------------
+   Navbar (Sticky)
+---------------------------------------------------------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  background: rgba(10,10,10,0.95);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  border-bottom: 1px solid var(--color-glass);
+}
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-accent);
+}
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+.nav-links a {
+  font-weight: 500;
+  color: var(--color-muted);
+}
+.nav-links a.active,
+.nav-links a:hover { color: var(--color-accent); }
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-text);
+  font-size: 1.5rem;
+}
+
+/* ---------------------------------------------------------
+   Hero
+---------------------------------------------------------- */
+.hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0a0a0a, #111);
+}
+.hero-content {
+  text-align: center;
+  max-width: 800px;
+}
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  color: var(--color-accent);
+}
+.hero h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin: .5rem 0 1.5rem;
+  font-weight: 400;
+}
+.hero-intro {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--color-muted);
+}
+.btn {
+  display: inline-block;
+  padding: .75rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-medium);
+}
+.btn.primary {
+  background: var(--color-accent);
+  color: #000;
+}
+.btn.secondary {
+  background: var(--color-glass);
+  color: var(--color-accent);
+}
+.btn:hover { opacity: .9; }
+
+/* ---------------------------------------------------------
+   About
+---------------------------------------------------------- */
+.about .about-text {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1rem;
+  color: var(--color-muted);
+}
+
+/* ---------------------------------------------------------
+   Statistics (Glass Cards)
+---------------------------------------------------------- */
+.stats-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+.stat-card {
+  background: var(--color-glass);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+  backdrop-filter: blur(6px);
+}
+.stat-card h3 {
+  font-size: 2rem;
+  color: var(--color-accent);
+  margin-bottom: .5rem;
+}
+
+/* ---------------------------------------------------------
+   Skills
+---------------------------------------------------------- */
+.skill-category {
+  margin-bottom: 2rem;
+}
+.skill-category h3 {
+  margin-bottom: .5rem;
+  color: var(--color-accent);
+}
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+}
+.skill-list li {
+  background: var(--color-glass);
+  padding: .5rem .9rem;
+  border-radius: var(--radius);
+  font-size: .9rem;
+}
+
+/* ---------------------------------------------------------
+   Experience Timeline
+---------------------------------------------------------- */
+.timeline {
+  list-style: none;
+  border-left: 2px solid var(--color-accent);
+  padding-left: 1.5rem;
+}
+.timeline li {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -9px;
+  top: .2rem;
+  width: 16px;
+  height: 16px;
+  background: var(--color-bg);
+  border: 3px solid var(--color-accent);
+  border-radius: 50%;
+}
+.timeline-date {
+  font-size: .85rem;
+  color: var(--color-muted);
+}
+
+/* ---------------------------------------------------------
+   Certifications & Projects (Glass Cards)
+---------------------------------------------------------- */
+.cert-grid,
+.proj-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.cert-card,
+.proj-card {
+  background: var(--color-glass);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  backdrop-filter: blur(8px);
+  transition: var(--transition-medium);
+}
+.cert-card:hover,
+.proj-card:hover {
+  transform: translateY(-4px);
+}
+.cert-card h3,
+.proj-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: .5rem;
+  color: var(--color-accent);
+}
+
+/* ---------------------------------------------------------
+   Contact
+---------------------------------------------------------- */
+.contact-info p {
+  margin-bottom: .5rem;
+}
+.contact-form {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+.form-group label {
+  margin-bottom: .25rem;
+  font-size: .9rem;
+  color: var(--color-muted);
+}
+.form-group input,
+.form-group textarea {
+  padding: .6rem .8rem;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  resize: vertical;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: 2px solid var(--color-accent);
+}
+.form-status {
+  margin-top: .5rem;
+  font-size: .9rem;
+}
+
+/* ---------------------------------------------------------
+   Footer
+---------------------------------------------------------- */
+.footer {
+  background: #111;
+  padding: 1.5rem 0;
+  font-size: .9rem;
+}
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+}
+.social-links a {
+  margin: 0 .5rem;
+  color: var(--color-muted);
+  transition: var(--transition-fast);
+}
+.social-links a:hover { color: var(--color-accent); }
+
+/* ---------------------------------------------------------
+   Responsive Adjustments
+---------------------------------------------------------- */
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--color-bg);
+    flex-direction: column;
+    width: 200px;
+    padding: 1rem;
+    gap: 1rem;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 12px rgba(0,0,0,.4);
+    transform: translateX(100%);
+    transition: var(--transition-medium);
+  }
+  .nav-links.open { transform: translateX(0); }
+  .nav-toggle { display: block; }
+}
+
+/* ---------------------------------------------------------
+   Animations
+---------------------------------------------------------- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.section { animation: fadeInUp .8s var(--transition-medium) both; }
